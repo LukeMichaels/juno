@@ -1,13 +1,16 @@
 # Juno
 A WordPress starter theme, also a chihuahua living in Portland OR.  
 
-This theme was built using:  
+This theme is inspired by and borrows from:  
   - [html5blank](http://html5blank.com/)
   - [Sass Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate)
 
 ## Note: This project is a work-and-progress and IS NOT ready for use yet. I'm still working on some key components (such as the Grunt file and instructions on how to get started developing)
 
 ## Installation
+  - Pull down all of the files into your projects `themes` folder
+  - cd into the `juno` folder and run `npm-install`
+  - run `grunt`
 
 ## Components
   - Sass
