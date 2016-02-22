@@ -39,3 +39,11 @@ Thumbs.db
 # node/grunt dependencies #
 ###########################
 node_modules/
+
+# sass cache files #
+####################
+.sass-cache/
+_variables.scssc
+_mixins.scssc
+_home.scssc
+_functions.scssc
