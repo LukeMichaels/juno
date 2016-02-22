@@ -100,9 +100,6 @@ function juno_conditional_scripts() {
 function juno_styles() {
   wp_register_style('main', get_template_directory_uri() . '/assets/css/main.min.css', array(), '1.0', 'all');
   wp_enqueue_style('main'); // Enqueue it!
-
-  wp_register_style('juno', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-  wp_enqueue_style('juno'); // Enqueue it!
 }
 
 // Register Navigation
