@@ -18,11 +18,18 @@ var runSequence = require('run-sequence');
 
 // Start browserSync server
 gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    }
-  })
+  //watch files
+  var files = [
+    'assets/style.css',
+    '*.php'
+  ];
+
+  //initialize browsersync
+  browserSync.init(files, {
+    //browsersync with a php server
+    proxy: "juno.dev:8888/",
+    notify: false
+  });
 })
 
 gulp.task('sass', function() {
@@ -31,7 +38,8 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('assets/css')) // Outputs it in the css folder
     .pipe(browserSync.reload({ // Reloading with Browser Sync
       stream: true
-    }));
+    })
+  );
 })
 
 // Watchers
