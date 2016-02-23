@@ -10,11 +10,11 @@ This theme is inspired by and borrows from:
 ## Installation
   - Pull down all of the files into your projects `themes` folder
   - cd into the `juno` folder and run `npm-install`
-  - run `grunt`
+  - run `gulp`
 
 ## What's in the box?
   - Sass
-  - Grunt
+  - Gulp
   - Normalize
   - Modernizr
   - Conditionizr
