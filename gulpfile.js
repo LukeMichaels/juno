@@ -1,12 +1,12 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
 var cssnano = require('gulp-cssnano');
+var sourcemaps = require('gulp-sourcemaps');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
@@ -27,20 +27,28 @@ gulp.task('browserSync', function() {
   //initialize browsersync
   browserSync.init(files, {
     //browsersync with a php server
-    proxy: "juno.dev:8888/",
+    proxy: "juno.dev:8888/", // input your development server address here
     notify: true
   });
 })
 
 gulp.task('sass', function() {
   return gulp.src('assets/sass/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass()) // Passes it through a gulp-sass
+    .pipe(sass()) // Passes it through gulp-sass
     .pipe(gulp.dest('assets/css')) // Outputs it in the css folder
     .pipe(browserSync.reload({ // Reloading with Browser Sync
       stream: true
     })
   );
 })
+
+gulp.task('minify', function () {
+  return gulp.src('assets/css/main.css')
+    .pipe(sourcemaps.init())
+    .pipe(cssnano())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('assets/css/min'));
+});
 
 // Watchers
 gulp.task('watch', function() {
@@ -93,7 +101,7 @@ gulp.task('clean:dist', function() {
 // ---------------
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync', 'watch'],
+  runSequence(['sass', 'minify', 'browserSync', 'watch'],
     callback
   )
 })
@@ -101,7 +109,7 @@ gulp.task('default', function(callback) {
 gulp.task('build', function(callback) {
   runSequence(
     'clean:dist',
-    ['sass', 'useref', 'images', 'fonts'],
+    ['sass', 'minify', 'useref', 'images', 'fonts'],
     callback
   )
 })
