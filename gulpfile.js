@@ -28,7 +28,7 @@ gulp.task('browserSync', function() {
   browserSync.init(files, {
     //browsersync with a php server
     proxy: "juno.dev:8888/",
-    notify: false
+    notify: true
   });
 })
 
