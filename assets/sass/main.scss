@@ -2,6 +2,7 @@
 
 // 1. Configuration and helpers
 @import
+  'utils/breakpoint',
   'utils/variables',
   'utils/functions',
   'utils/mixins';
@@ -29,3 +30,11 @@
 // 6. Page-specific styles
 @import
   'pages/home';
+
+
+.wrapper section h1 {
+  font-size: 18px;
+  @include breakpoint($small) {
+    font-size: 42px;
+  }
+}
